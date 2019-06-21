@@ -1,6 +1,6 @@
-class ErrStack {
+class ErrDetail {
   description () {
-    return 'Includes the error stack in the HTTP response.'
+    return 'Includes the error stack trace in the HTTP response.'
   }
 
   middleware () {
@@ -15,4 +15,4 @@ class ErrStack {
   }
 }
 
-module.exports = ErrStack
+module.exports = ErrDetail
