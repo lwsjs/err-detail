@@ -15,6 +15,19 @@ $ lws --stack lws-err-detail broken.js
 Listening on http://mba4.local:8000, http://127.0.0.1:8000, http://192.168.0.200:8000
 ```
 
+Without `lws-err-detail`, the response does not include any information about the error.
+
+```
+$ curl -i http://localhost:8000
+HTTP/1.1 500 Internal Server Error
+Content-Type: text/plain; charset=utf-8
+Content-Length: 21
+Date: Fri, 21 Jun 2019 14:27:58 GMT
+Connection: keep-alive
+
+Internal Server Error
+```
+
 With `lws-err-detail` at the top of the middleware stack, the response now includes the exception stack trace.
 
 ```
@@ -37,6 +50,8 @@ Error: broken
     at parserOnIncoming (_http_server.js:713:12)
     at HTTPParser.parserOnHeadersComplete (_http_common.js:116:17)err-detail
 ```
+
+The `lws` command line tool will always write error details to the console.
 
 * * *
 

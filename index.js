@@ -8,8 +8,9 @@ class ErrDetail {
       try {
         await next()
       } catch (err) {
-        ctx.status = err.status || 500
-        ctx.body = err.stack
+        err.expose = true
+        err.message = err.stack
+        throw err
       }
     }
   }
