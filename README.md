@@ -7,6 +7,32 @@
 
 # lws-err-detail
 
+Middleware plugin for [lws](https://github.com/lwsjs/lws) to include the error stack trace in the HTTP response. Always use as the first middleware in the stack.
+
+In this example, `broken.js` is a middleware which throws an exception.
+
+```
+$ ws --stack lws-err-detail broken.js
+Listening on http://mba4.local:8000, http://127.0.0.1:8000, http://192.168.0.200:8000
+```
+
+With `lws-err-detail` at the top of the middleware stack, the response now includes the exception stack trace.
+
+```
+$ curl http://127.0.0.1:8000
+Error: broken
+    at /Users/lloyd/Documents/lwsjs/err-detail/broken.js:4:13
+    at dispatch (/Users/lloyd/Documents/lwsjs/local-web-server/node_modules/koa-compose/index.js:42:32)
+    at /Users/lloyd/Documents/lwsjs/err-detail/index.js:9:15
+    at dispatch (/Users/lloyd/Documents/lwsjs/local-web-server/node_modules/koa-compose/index.js:42:32)
+    at /Users/lloyd/Documents/lwsjs/local-web-server/node_modules/koa-compose/index.js:34:12
+    at Application.handleRequest (/Users/lloyd/Documents/lwsjs/local-web-server/node_modules/koa/lib/application.js:151:12)
+    at Server.handleRequest (/Users/lloyd/Documents/lwsjs/local-web-server/node_modules/koa/lib/application.js:133:19)
+    at Server.emit (events.js:200:13)
+    at parserOnIncoming (_http_server.js:713:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:116:17)err-detail
+```
+
 * * *
 
 &copy; 2019 Lloyd Brookes \<75pound@gmail.com\>.

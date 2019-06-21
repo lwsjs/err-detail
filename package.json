@@ -2,9 +2,14 @@
   "name": "lws-err-detail",
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "0.0.0",
-  "description": "lws-err-detail",
-  "repository": "https://github.com/75lb/lws-err-detail",
-  "keywords": [],
+  "description": "Middleware plugin for lws to include the error stack trace in the response",
+  "repository": "https://github.com/lwsjs/err-detail",
+  "keywords": [
+    "lws",
+    "lws-middleware",
+    "error",
+    "exception"
+  ],
   "license": "MIT",
   "engines": {
     "node": ">=8"
