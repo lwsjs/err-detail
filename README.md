@@ -2,7 +2,6 @@
 [![npm module downloads](https://img.shields.io/npm/dt/lws-err-detail.svg)](https://www.npmjs.org/package/lws-err-detail)
 [![Build Status](https://travis-ci.org/lwsjs/err-detail.svg?branch=master)](https://travis-ci.org/lwsjs/err-detail)
 [![Dependency Status](https://badgen.net/david/dep/lwsjs/err-detail)](https://david-dm.org/lwsjs/err-detail)
-[![Coverage Status](https://coveralls.io/repos/github/lwsjs/err-detail/badge.svg)](https://coveralls.io/github/lwsjs/err-detail)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # lws-err-detail
@@ -12,14 +11,20 @@ Middleware plugin for [lws](https://github.com/lwsjs/lws) to include the error s
 In this example, `broken.js` is a middleware which throws an exception.
 
 ```
-$ ws --stack lws-err-detail broken.js
+$ lws --stack lws-err-detail broken.js
 Listening on http://mba4.local:8000, http://127.0.0.1:8000, http://192.168.0.200:8000
 ```
 
 With `lws-err-detail` at the top of the middleware stack, the response now includes the exception stack trace.
 
 ```
-$ curl http://127.0.0.1:8000
+$ curl -i http://127.0.0.1:8000
+HTTP/1.1 500 Internal Server Error
+Content-Type: text/plain; charset=utf-8
+Content-Length: 838
+Date: Fri, 21 Jun 2019 10:13:06 GMT
+Connection: keep-alive
+
 Error: broken
     at /Users/lloyd/Documents/lwsjs/err-detail/broken.js:4:13
     at dispatch (/Users/lloyd/Documents/lwsjs/local-web-server/node_modules/koa-compose/index.js:42:32)
