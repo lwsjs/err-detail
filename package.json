@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
     "test": "test-runner test.js"
@@ -21,8 +21,8 @@
     "index.js"
   ],
   "devDependencies": {
-    "lws": "^2.0.1",
+    "lws": "^2.0.8",
     "node-fetch": "^2.6.0",
-    "test-runner": "^0.6.0"
+    "test-runner": "^0.8.13"
   }
 }

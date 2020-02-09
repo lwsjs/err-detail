@@ -1,10 +1,10 @@
 const Tom = require('test-runner').Tom
-const a = require('assert')
+const a = require('assert').strict
 const fetch = require('node-fetch')
 const Lws = require('lws')
 const ErrDetail = require('./')
 
-const tom = module.exports = new Tom('err-detail')
+const tom = module.exports = new Tom()
 
 tom.test('err stack trace returned', async function () {
   const port = 9800 + this.index
@@ -21,7 +21,7 @@ tom.test('err stack trace returned', async function () {
   })
   const response = await fetch(`http://localhost:${port}/`)
   lws.server.close()
-  a.strictEqual(response.status, 500)
+  a.equal(response.status, 500)
   const body = await response.text()
   a.ok(/test.js/.test(body))
 })
